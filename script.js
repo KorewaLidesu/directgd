@@ -7,13 +7,20 @@
 
     $shareLink.on('keyup paste', function() {
       var link = $shareLink.val(),
-        l = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?id=$1");
-      if(l !== link) {
-        $downloadLink.val(l);
+        link1 = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?export=download&id=$1");
+        link2 = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?id=$1");
+      if(l1 !== link) {
+        $downloadLink.val(link1);
         $copyButton.removeAttr('disabled');
       } else {
         $downloadLink.val('');
         $copyButton.attr('disabled', 'disabled');
+      if(link2 !== link) {
+        $downloadLink.val(link2);
+        $copyButton.removeAttr('disabled');
+      } else {
+        $downloadLink.val('');
+        $copyButton.attr('disabled', 'disabled');     
       }
     });
 
