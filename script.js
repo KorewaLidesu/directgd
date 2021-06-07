@@ -7,7 +7,7 @@
 
     $shareLink.on('keyup paste', function() {
       var link = $shareLink.val(),
-        l = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?export=download&id=$1");
+        l = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?id=$1");
       if(l !== link) {
         $downloadLink.val(l);
         $copyButton.removeAttr('disabled');
