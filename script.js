@@ -1,36 +1,27 @@
 (function($) {
   $(function() {
     var $shareLink = $('#sharelink'),
-      $downloadLink1 = $('#downloadlink1'),
-      $downloadLink2 = $('#downloadlink2'),
-      $copyButton1 = $('#copylinkbtn1'),
-      $copyButton2 = $('#copylinkbtn2'),
+      $downloadLink = $('#downloadlink'),
+      $copyButton = $('#copylinkbtn'),
       clipboard;
 
     $shareLink.on('keyup paste', function() {
       var link = $shareLink.val(),
-        link1 = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?export=download&id=$1");
-        link2 = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?id=$1");
-      if(link1 !== link) {
-        $downloadLink1.val(link1);
-        $copyButton1.removeAttr('disabled');
+        l = link.replace(/\/file\/d\/(.+)\/(.+)/, "/uc?export=download&id=$1");
+      if(l !== link) {
+        $downloadLink.val(l);
+        $copyButton.removeAttr('disabled');
       } else {
-        $downloadLink1.val('');
-        $copyButton1.attr('disabled', 'disabled');
-      if(link2 !== link) {
-        $downloadLink2.val(link2);
-        $copyButton2.removeAttr('disabled');
-      } else {
-        $downloadLink2.val('');
-        $copyButton2.attr('disabled', 'disabled');     
+        $downloadLink.val('');
+        $copyButton.attr('disabled', 'disabled');   
       }
     });
 
-    $downloadLink1.on('click', function() {
-      $downloadLink1.select();
+    $downloadLink.on('click', function() {
+      $downloadLink.select();
     });
-    $downloadLink2.on('click', function() {
-      $downloadLink2.select();
+    $downloadLink.on('click', function() {
+      $downloadLink.select();
     });
 
     clipboard = new Clipboard('#copylinkbtn');
